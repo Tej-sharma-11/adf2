@@ -64,9 +64,10 @@ jobs:
         uses: azure/login@v1
         with:
           client-id: "9c525365-e62a-4313-a551-b87e0f4c42d5"
-          client-secret: "Yqn8Q~SOw1_Spw~kSstGMfGQ1yUEzqv5LJijkbfg"
+          # client-secret: "Yqn8Q~SOw1_Spw~kSstGMfGQ1yUEzqv5LJijkbfg"
           tenant-id: ${{ env.TENANT_ID }}
           subscription-id: ${{ env.PROD_SUBSCRIPTION_ID }}
+          allow-no-subscriptions: true
         
 
       - name: Run PreDeploymentScript
