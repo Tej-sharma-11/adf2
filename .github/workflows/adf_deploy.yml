@@ -77,7 +77,7 @@ jobs:
             -armTemplate "./ARMTemplateForFactory.json" `
             -armTemplateParameters "./ARMTemplateParametersForFactory.json" `
             -ResourceGroupName ${{ env.PROD_RESOURCE_GROUP }}`
-            -DataFactoryName ${{ env.PROD_ADF_NAME }} `
+            -DataFactoryName ${{env.PROD_ADF_NAME}} `
             -predeployment 1 `
             -deleteDeployment 0
 
