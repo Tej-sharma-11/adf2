@@ -10,17 +10,17 @@ permissions:
   actions: read
 
 env:
-  DEV_SUBSCRIPTION_ID: ${{ vars.DEV_SUBSCRIPTION_ID }}
-  DEV_RESOURCE_GROUP: ${{ vars.DEV_RESOURCE_GROUP }}
-  DEV_ADF_NAME: ${{ vars.DEV_ADF_NAME }}
-  PROD_RESOURCE_GROUP: ${{ vars.PROD_RESOURCE_GROUP }}
-  PROD_ADF_NAME: ${{ vars.PROD_ADF_NAME }}
-  PROD_SUBSCRIPTION_ID: ${{ vars.PROD_SUBSCRIPTION_ID }}
-  TENANT_ID: ${{ vars.TENANT_ID }}
+  DEV_SUBSCRIPTION_ID: "bcfad0a4-d4be-4e66-b003-aea579c852d3"
+  DEV_RESOURCE_GROUP: "Tej_RG"
+  DEV_ADF_NAME: "devasdf"
+  PROD_RESOURCE_GROUP: "Tej_RG"
+  PROD_ADF_NAME: "prodadfs"
+  PROD_SUBSCRIPTION_ID: "bcfad0a4-d4be-4e66-b003-aea579c852d3"
+  TENANT_ID: "f55b6506-a6ec-480b-b903-e4a0249336f1"
 
 jobs:
   build:
-    runs-on: [az, dev]
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
@@ -51,7 +51,7 @@ jobs:
 
   release:
     needs: build
-    runs-on: [az, prod]
+    runs-on: ubuntu-latest
     steps:
     
 
@@ -63,35 +63,42 @@ jobs:
       - name: Login via Az module
         uses: azure/login@v1
         with:
-          auth-type: IDENTITY
+          client-id: "9c525365-e62a-4313-a551-b87e0f4c42d5"
+          client-secret: "Yqn8Q~SOw1_Spw~kSstGMfGQ1yUEzqv5LJijkbfg"
           tenant-id: ${{ env.TENANT_ID }}
           subscription-id: ${{ env.PROD_SUBSCRIPTION_ID }}
         
 
-      # - name: Run PreDeploymentScript
-      #   shell: pwsh
-      #   run: |
-      #     sudo pwsh -Command ./PrePostDeploymentScript.ps1 `
-      #       -armTemplate "./ARMTemplateForFactory.json" `
-      #       -armTemplateParameters "./ARMTemplateParametersForFactory.json" `
-      #       -ResourceGroupName "rg-udp-datawarehouse-prod-sea-001" `
-      #       -DataFactoryName "adf-udp-datawarehouse-wcm-prod-sea-001" `
-      #       -predeployment 1 `
-      #       -deleteDeployment 0
+      - name: Run PreDeploymentScript
+        shell: pwsh
+        run: |
+          sudo pwsh -Command ./PrePostDeploymentScript.ps1 `
+            -armTemplate "./ARMTemplateForFactory.json" `
+            -armTemplateParameters "./ARMTemplateParametersForFactory.json" `
+            -ResourceGroupName ${{ env.PROD_RESOURCE_GROUP }}`
+            -DataFactoryName ${{ env.PROD_ADF_NAME }} `
+            -predeployment 1 `
+            -deleteDeployment 0
 
 
       - name: Deploy Azure Resource Manager (ARM) Template
         uses: Azure/arm-deploy@v1.0.6
         with:
-          # Provide the scope of the deployment. Valid values are: 'resourcegroup', 'managementgroup', 'subscription'
           scope: 'resourcegroup'
-          resourceGroupName: 'rg-udp-datawarehouse-prod-sea-001'
+          resourceGroupName: ${{ env.PROD_RESOURCE_GROUP }}
           template: ./ARMTemplateForFactory.json
           deploymentMode: Incremental
           parameters: > 
             ./ARMTemplateParametersForFactory.json
-            factoryName=adf-udp-datawarehouse-wcm-prod-sea-001
+            factoryName=${{ env.PROD_ADF_NAME }}
 
-      # - name: Run Post-deployment script
-      #   shell: pwsh
-      #   run:  sudo pwsh -command "./PrePostDeploymentScript.ps1 -armTemplate ./ARMTemplateForFactory.json -armTemplateParameters ./ARMTemplateParametersForFactory.json -ResourceGroupName rg-udp-datawarehouse-prod-sea-001 -DataFactoryName adf-udp-datawarehouse-wcm-prod-sea-001 -predeployment 0 -deleteDeployment 0"
+      - name: Run PreDeploymentScript
+        shell: pwsh
+        run: |
+          sudo pwsh -Command ./PrePostDeploymentScript.ps1 `
+            -armTemplate "./ARMTemplateForFactory.json" `
+            -armTemplateParameters "./ARMTemplateParametersForFactory.json" `
+            -ResourceGroupName ${{ env.PROD_RESOURCE_GROUP }}`
+            -DataFactoryName ${{ env.PROD_ADF_NAME }} `
+            -predeployment 0 `
+            -deleteDeployment 1
