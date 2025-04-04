@@ -69,6 +69,11 @@ jobs:
           subscription-id: ${{ env.PROD_SUBSCRIPTION_ID }}
           allow-no-subscriptions: true
         
+      - name: Install Required PowerShell Modules
+        shell: pwsh
+        run: |
+          Install-Module -Name Az -Force -AllowClobber -Scope CurrentUser
+          Install-Module -Name Az.DataFactory -Force -AllowClobber -Scope CurrentUser
 
       - name: Run PreDeploymentScript
         shell: pwsh
