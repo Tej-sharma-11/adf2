@@ -80,7 +80,13 @@ jobs:
       #   run: |
       #     Connect-AzAccount -Identity
       #     Set-AzContext -SubscriptionId ${{ env.PROD_SUBSCRIPTION_ID }}
-          
+
+
+      
+      - name: Before Deployment Script
+        shell: pwsh
+        run: pwsh -Command Connect-AzAccount -Identity
+        
       - name: Run PreDeploymentScript
         shell: pwsh
         run: |
