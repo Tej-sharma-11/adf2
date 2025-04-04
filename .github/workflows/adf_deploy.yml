@@ -73,7 +73,7 @@ jobs:
       - name: Run PreDeploymentScript
         shell: pwsh
         run: |
-          sudo pwsh -Command ./PrePostDeploymentScript.ps1 `
+          ./PrePostDeploymentScript.ps1 `
             -armTemplate "./ARMTemplateForFactory.json" `
             -armTemplateParameters "./ARMTemplateParametersForFactory.json" `
             -ResourceGroupName ${{ env.PROD_RESOURCE_GROUP }}`
@@ -96,7 +96,7 @@ jobs:
       - name: Run PreDeploymentScript
         shell: pwsh
         run: |
-          sudo pwsh -Command ./PrePostDeploymentScript.ps1 `
+          ./PrePostDeploymentScript.ps1 `
             -armTemplate "./ARMTemplateForFactory.json" `
             -armTemplateParameters "./ARMTemplateParametersForFactory.json" `
             -ResourceGroupName ${{ env.PROD_RESOURCE_GROUP }}`
