@@ -82,7 +82,10 @@ jobs:
       - name: Run PreDeploymentScript
         shell: pwsh
         run: |
-          sudo pwsh -command ./PrePostDeploymentScript.ps1 `
+          $securePassword = ConvertTo-SecureString "Yqn8Q~SOw1_Spw~kSstGMfGQ1yUEzqv5LJijkbfg" -AsPlainText -Force
+          $credential = New-Object System.Management.Automation.PSCredential ("9c525365-e62a-4313-a551-b87e0f4c42d5", $securePassword)
+          Connect-AzAccount -ServicePrincipal -Credential $credential -TenantId ${{ env.TENANT_ID }} -SubscriptionId ${{ env.PROD_SUBSCRIPTION_ID }}
+          ./PrePostDeploymentScript.ps1 `
             -armTemplate "./ARMTemplateForFactory.json" `
             -armTemplateParameters "./ARMTemplateParametersForFactory.json" `
             -ResourceGroupName "${{ env.PROD_RESOURCE_GROUP }}" `
