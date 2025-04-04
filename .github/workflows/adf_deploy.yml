@@ -76,11 +76,10 @@ jobs:
           ./PrePostDeploymentScript.ps1 `
             -armTemplate "./ARMTemplateForFactory.json" `
             -armTemplateParameters "./ARMTemplateParametersForFactory.json" `
-            -ResourceGroupName ${{ env.PROD_RESOURCE_GROUP }}`
-            -DataFactoryName ${{env.PROD_ADF_NAME}} `
+            -ResourceGroupName "${{ env.PROD_RESOURCE_GROUP }}" `
+            -DataFactoryName "${{ env.PROD_ADF_NAME }}" `
             -predeployment 1 `
             -deleteDeployment 0
-
 
       - name: Deploy Azure Resource Manager (ARM) Template
         uses: Azure/arm-deploy@v1.0.6
@@ -93,13 +92,14 @@ jobs:
             ./ARMTemplateParametersForFactory.json
             factoryName=${{ env.PROD_ADF_NAME }}
 
-      - name: Run PreDeploymentScript
+      - name: Run PostDeploymentScript
         shell: pwsh
         run: |
           ./PrePostDeploymentScript.ps1 `
             -armTemplate "./ARMTemplateForFactory.json" `
             -armTemplateParameters "./ARMTemplateParametersForFactory.json" `
-            -ResourceGroupName ${{ env.PROD_RESOURCE_GROUP }}`
-            -DataFactoryName ${{ env.PROD_ADF_NAME }} `
+            -ResourceGroupName "${{ env.PROD_RESOURCE_GROUP }}" `
+            -DataFactoryName "${{ env.PROD_ADF_NAME }}" `
             -predeployment 0 `
             -deleteDeployment 1
+
