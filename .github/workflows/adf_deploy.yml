@@ -51,7 +51,7 @@ jobs:
 
   release:
     needs: build
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
     
 
@@ -73,11 +73,11 @@ jobs:
       - name: Run PreDeploymentScript
         shell: pwsh
         run: |
-          ./PrePostDeploymentScript.ps1 `
+          sudo pwsh -command ./PrePostDeploymentScript.ps1 `
             -armTemplate "./ARMTemplateForFactory.json" `
             -armTemplateParameters "./ARMTemplateParametersForFactory.json" `
             -ResourceGroupName "${{ env.PROD_RESOURCE_GROUP }}" `
-            -DataFactoryName "${{ env.PROD_ADF_NAME }}" `
+            -DataFactoryName prodadfs`
             -predeployment 1 `
             -deleteDeployment 0
 
@@ -95,7 +95,7 @@ jobs:
       - name: Run PostDeploymentScript
         shell: pwsh
         run: |
-          ./PrePostDeploymentScript.ps1 `
+          sudo pwsh -command ./PrePostDeploymentScript.ps1 `
             -armTemplate "./ARMTemplateForFactory.json" `
             -armTemplateParameters "./ARMTemplateParametersForFactory.json" `
             -ResourceGroupName "${{ env.PROD_RESOURCE_GROUP }}" `
