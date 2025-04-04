@@ -88,7 +88,7 @@ jobs:
           ./PrePostDeploymentScript.ps1 `
             -armTemplate "./ARMTemplateForFactory.json" `
             -armTemplateParameters "./ARMTemplateParametersForFactory.json" `
-            -ResourceGroupName "${{ env.PROD_RESOURCE_GROUP }}" `
+            -ResourceGroupName "${{env.PROD_RESOURCE_GROUP}}" `
             -DataFactoryName prodadfs`
             -predeployment 1 `
             -deleteDeployment 0
