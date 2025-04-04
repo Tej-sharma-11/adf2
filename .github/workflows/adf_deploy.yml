@@ -69,24 +69,16 @@ jobs:
           subscription-id: ${{ env.PROD_SUBSCRIPTION_ID }}
           allow-no-subscriptions: true
         
-      # - name: Install Required PowerShell Modules
-      #   shell: pwsh
-      #   run: |
-      #     sudo pwsh -Command "Install-Module -Name Az -Force -AllowClobber -Scope AllUsers"
-      #     sudo pwsh -Command "Install-Module -Name Az.DataFactory -Force -AllowClobber -Scope AllUsers"
-
-      # - name: Azure Login
-      #   shell: pwsh
-      #   run: |
-      #     Connect-AzAccount -Identity
-      #     Set-AzContext -SubscriptionId ${{ env.PROD_SUBSCRIPTION_ID }}
-
-
-      
       - name: Before Deployment Script
         shell: pwsh
-        run: pwsh -Command Connect-AzAccount -Identity
-        
+        run: |
+          $securePassword = ConvertTo-SecureString "Yqn8Q~SOw1_Spw~kSstGMfGQ1yUEzqv5LJijkbfg" -AsPlainText -Force
+          $credential = New-Object System.Management.Automation.PSCredential ("9c525365-e62a-4313-a551-b87e0f4c42d5", $securePassword)
+          Connect-AzAccount -ServicePrincipal -Credential $credential -TenantId ${{ env.TENANT_ID }} -SubscriptionId ${{ env.PROD_SUBSCRIPTION_ID }}
+
+    
+
+      
       - name: Run PreDeploymentScript
         shell: pwsh
         run: |
