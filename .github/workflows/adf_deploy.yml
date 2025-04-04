@@ -89,7 +89,7 @@ jobs:
             -armTemplate "./ARMTemplateForFactory.json" `
             -armTemplateParameters "./ARMTemplateParametersForFactory.json" `
             -ResourceGroupName "${{env.PROD_RESOURCE_GROUP}}" `
-            -DataFactoryName prodadfs`
+            -DataFactoryName "prodadfs" `
             -predeployment 1 `
             -deleteDeployment 0
 
