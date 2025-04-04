@@ -116,5 +116,5 @@ jobs:
             -ResourceGroupName "${{ env.PROD_RESOURCE_GROUP }}" `
             -DataFactoryName "${{ env.PROD_ADF_NAME }}" `
             -predeployment 0 `
-            -deleteDeployment 0
+            -deleteDeployment 1
 
