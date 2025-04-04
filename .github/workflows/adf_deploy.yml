@@ -75,11 +75,11 @@ jobs:
       #     sudo pwsh -Command "Install-Module -Name Az -Force -AllowClobber -Scope AllUsers"
       #     sudo pwsh -Command "Install-Module -Name Az.DataFactory -Force -AllowClobber -Scope AllUsers"
 
-      - name: Azure Login
-        shell: pwsh
-        run: |
-          Connect-AzAccount -Identity
-          Set-AzContext -SubscriptionId ${{ env.PROD_SUBSCRIPTION_ID }}
+      # - name: Azure Login
+      #   shell: pwsh
+      #   run: |
+      #     Connect-AzAccount -Identity
+      #     Set-AzContext -SubscriptionId ${{ env.PROD_SUBSCRIPTION_ID }}
           
       - name: Run PreDeploymentScript
         shell: pwsh
