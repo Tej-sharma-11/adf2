@@ -104,7 +104,6 @@ jobs:
             ./ARMTemplateParametersForFactory.json
             factoryName=${{ env.PROD_ADF_NAME }}
             AzureDatabricks1_accessToken="dapi2a7782370d2c11f91a9853adcaf18041-3"
-            AzureDatabricks1_properties_typeProperties_existingClusterId="prodtoken"
             dev_properties_typeProperties_baseUrl="https://prodkvls.vault.azure.net/"
             AzureDatabricks1_properties_typeProperties_domain="https://adb-1432017534196835.15.azuredatabricks.net/"
             devclusterid="prodclusterid"
