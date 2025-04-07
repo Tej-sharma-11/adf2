@@ -103,6 +103,8 @@ jobs:
           parameters: > 
             ./ARMTemplateParametersForFactory.json
             factoryName=${{ env.PROD_ADF_NAME }}
+            AzureDatabricks1_properties_typeProperties_existingClusterId="asdfsadfasdfsad"
+            dev_properties_typeProperties_baseUrl="https://prodkvls.vault.azure.net/"
 
       - name: Run PostDeploymentScript
         shell: pwsh
