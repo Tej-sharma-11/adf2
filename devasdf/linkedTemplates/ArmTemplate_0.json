@@ -76,7 +76,7 @@
 						"type": "SecureString",
 						"value": "[parameters('AzureDatabricks1_accessToken')]"
 					},
-					"existingClusterId": "dev"
+					"existingClusterId": "0407-124043-7pvxxsfo"
 				}
 			},
 			"dependsOn": []
