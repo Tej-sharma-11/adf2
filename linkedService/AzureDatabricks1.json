@@ -1,0 +1,23 @@
+{
+	"name": "AzureDatabricks1",
+	"properties": {
+		"annotations": [],
+		"type": "AzureDatabricks",
+		"typeProperties": {
+			"domain": "https://adb-3363211198343984.4.azuredatabricks.net",
+			"accessToken": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "dev",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "devtoken"
+			},
+			"newClusterNodeType": "asfdasdf",
+			"newClusterNumOfWorker": "1",
+			"newClusterVersion": "sdfasdfasdf",
+			"clusterOption": "Fixed",
+			"newClusterInitScripts": []
+		}
+	}
+}
