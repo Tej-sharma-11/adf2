@@ -107,6 +107,7 @@ jobs:
             AzureDatabricks1_properties_typeProperties_existingClusterId="prodtoken"
             dev_properties_typeProperties_baseUrl="https://prodkvls.vault.azure.net/"
             AzureDatabricks1_properties_typeProperties_domain="https://adb-1432017534196835.15.azuredatabricks.net/"
+            devclusterid="prodclusterid"
 
       # - name: Run PostDeploymentScript
       #   shell: pwsh
