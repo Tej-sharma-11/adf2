@@ -7,9 +7,13 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "devasdf"
 		},
+		"AzureDatabricks1_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks1'"
+		},
 		"AzureDatabricks1_properties_typeProperties_existingClusterId": {
 			"type": "string",
-			"defaultValue": "sadfasdjfhsd"
+			"defaultValue": "devcluster"
 		},
 		"dev_properties_typeProperties_baseUrl": {
 			"type": "string",
@@ -42,11 +46,14 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
-					"dev_properties_typeProperties_baseUrl": {
-						"value": "[parameters('dev_properties_typeProperties_baseUrl')]"
+					"AzureDatabricks1_accessToken": {
+						"value": "[parameters('AzureDatabricks1_accessToken')]"
 					},
 					"AzureDatabricks1_properties_typeProperties_existingClusterId": {
 						"value": "[parameters('AzureDatabricks1_properties_typeProperties_existingClusterId')]"
+					},
+					"dev_properties_typeProperties_baseUrl": {
+						"value": "[parameters('dev_properties_typeProperties_baseUrl')]"
 					}
 				}
 			},

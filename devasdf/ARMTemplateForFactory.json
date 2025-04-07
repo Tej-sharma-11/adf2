@@ -7,9 +7,13 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "devasdf"
 		},
+		"AzureDatabricks1_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks1'"
+		},
 		"AzureDatabricks1_properties_typeProperties_existingClusterId": {
 			"type": "string",
-			"defaultValue": "sadfasdjfhsd"
+			"defaultValue": "devcluster"
 		},
 		"dev_properties_typeProperties_baseUrl": {
 			"type": "string",
@@ -60,22 +64,15 @@
 				"annotations": [],
 				"type": "AzureDatabricks",
 				"typeProperties": {
-					"domain": "https://adb-3363211198343984.4.azuredatabricks.net",
+					"domain": "https://adb-3363211198343984.4.azuredatabricks.net/",
 					"accessToken": {
-						"type": "AzureKeyVaultSecret",
-						"store": {
-							"referenceName": "dev",
-							"type": "LinkedServiceReference"
-						},
-						"secretName": "devtoken",
-						"secretVersion": "sadfuasd"
+						"type": "SecureString",
+						"value": "[parameters('AzureDatabricks1_accessToken')]"
 					},
 					"existingClusterId": "[parameters('AzureDatabricks1_properties_typeProperties_existingClusterId')]"
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/dev')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/dev')]",
