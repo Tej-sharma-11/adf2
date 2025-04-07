@@ -8,9 +8,6 @@
 		"AzureDatabricks1_accessToken": {
 			"value": ""
 		},
-		"AzureDatabricks1_properties_typeProperties_existingClusterId": {
-			"value": "devcluster"
-		},
 		"dev_properties_typeProperties_baseUrl": {
 			"value": "https://devkvls.vault.azure.net/"
 		}
