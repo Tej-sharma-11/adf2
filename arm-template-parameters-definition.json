@@ -93,7 +93,7 @@
                     "host": "=",
                     "role": "=",
                     "clientId": "=",
-                    "existingClusterId": "=",
+                    "existingClusterId": "",
                     "clusterUserName": "=",
                     "clusterSshUserName": "=",
                     "hostSubscriptionId": "=",
