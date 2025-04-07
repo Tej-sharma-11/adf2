@@ -18,6 +18,10 @@
 		"dev_properties_typeProperties_baseUrl": {
 			"type": "string",
 			"defaultValue": "https://devkvls.vault.azure.net/"
+		},
+		"devclusterid":{
+			"type": "string",
+			"defaultValue": ""
 		}
 	},
 	"variables": {
@@ -97,7 +101,8 @@
 						"type": "SecureString",
 						"value": "[parameters('AzureDatabricks1_accessToken')]"
 					},
-					"existingClusterId": "@linkedService().devclusterid"
+					"existingClusterId": "[parameters('devclusterid')]"
+
 				}
 			},
 			"dependsOn": []
