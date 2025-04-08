@@ -1,5 +1,13 @@
 {
 	"name": "devasdf",
+	"properties": {
+		"globalParameters": {
+			"devclusterid": {
+				"type": "string",
+				"value": "0407-124043-7pvxxsfo"
+			}
+		}
+	},
 	"location": "eastus",
 	"identity": {
 		"type": "SystemAssigned",
