@@ -13,9 +13,6 @@
 		},
 		"dev_properties_typeProperties_baseUrl": {
 			"value": "https://devkvls.vault.azure.net/"
-		},
-		"devclusterid":{
-			"defaultValue": ""
 		}
 	}
 }
