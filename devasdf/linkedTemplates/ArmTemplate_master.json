@@ -11,7 +11,15 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks1'"
 		},
+		"AzureDatabricksDeltaLake1_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricksDeltaLake1'"
+		},
 		"AzureDatabricks1_properties_typeProperties_domain": {
+			"type": "string",
+			"defaultValue": "https://adb-3363211198343984.4.azuredatabricks.net/"
+		},
+		"AzureDatabricksDeltaLake1_properties_typeProperties_domain": {
 			"type": "string",
 			"defaultValue": "https://adb-3363211198343984.4.azuredatabricks.net/"
 		},
@@ -49,8 +57,14 @@
 					"AzureDatabricks1_accessToken": {
 						"value": "[parameters('AzureDatabricks1_accessToken')]"
 					},
+					"AzureDatabricksDeltaLake1_accessToken": {
+						"value": "[parameters('AzureDatabricksDeltaLake1_accessToken')]"
+					},
 					"AzureDatabricks1_properties_typeProperties_domain": {
 						"value": "[parameters('AzureDatabricks1_properties_typeProperties_domain')]"
+					},
+					"AzureDatabricksDeltaLake1_properties_typeProperties_domain": {
+						"value": "[parameters('AzureDatabricksDeltaLake1_properties_typeProperties_domain')]"
 					},
 					"dev_properties_typeProperties_baseUrl": {
 						"value": "[parameters('dev_properties_typeProperties_baseUrl')]"
